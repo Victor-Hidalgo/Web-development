@@ -1,19 +1,29 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function App() {
+  const [people, setPeople] = useState([
+    { name: 'bata', key: '1' },
+    { name: 'yoshi', key: '2' },
+    { name: 'mario', key: '3' },
+    { name: 'luigi', key: '4' },
+    { name: 'peach', key: '5' },
+    { name: 'toad', key: '6' },
+    { name: 'bowser', key: '7' },
+    { name: 'daisy', key: '8' },
+  ]);
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Hello, World!</Text>
-      </View>
-      <StatusBar style="auto" />
-      <View style={styles.body}>
-        <Text style={styles.boldText}>Lorem ipsum <Text>testing</Text> dolor sit amet.</Text>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-        <Text>Lorem ipsum dolor sit amet.</Text>
-      </View>
+
+    <ScrollView>
+      { people.map(item => (
+        <View key={item.key}>
+            <Text style={styles.item}>{item.name}</Text>
+        </View>
+        ))}
+    </ScrollView>
+
     </View>
   );
 }
@@ -22,19 +32,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
-  header: {
-    backgroundColor:'pink',
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  body: {
-    backgroundColor: 'yellow',
-    padding: 20,
-    fontWeight: 'bold',
+  item: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: 'pink',
+    fontSize: 24
   }
 });
