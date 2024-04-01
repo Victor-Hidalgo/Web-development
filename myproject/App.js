@@ -30,6 +30,7 @@ export default function App() {
         />
       </View>
      </View>
+          //test
     </View>
   );
 }
